@@ -1,17 +1,62 @@
-<div class='login'>
-    <center><h1>Predict CO2 Emission of Vehicles</h1>
-    <h3>Enter the following values to predict the CO2 emission from the vehicle</h3>
+<html>
+    <br>
+    <center><h1>SECOND LIFE</h1></center>
+    <style>
+        body {
+            background: white }
+        section {
+            background: black;
+            color: white;
+            border-radius: 1em;
+            padding: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) }
+    </style>
+    <section>
+        <div class='login'>
+            <center><h1>Upload an image of your material for sale</h1>
+            
+            <break></break>
+            
+            <form action="/action_page.php">
+            <input type="file" id="myFile" name="filename">
+            <input type="submit">
+            </form>
+            
+            <break></break>
 
-    <form action='{{ url_for('predict')}}"method="post">
+        <h2>OR</h2>
+
+        <h1>What material are you looking for?</h3>
+
+
+
+    <form action='{{ url_for('find listings')}}"method="post">
+        <input type="text" name="material" placeholder="Material" required="required" />
+        <input type="text" name="condition" placeholder="Condition" required="required" />
+        <input type="text" name="description" placeholder="Description" required="required" />
+
+        <button type="submit" class="btn">Predict</button>
+    
+    </section>
+            
+            <!-- <h3>Enter the following values to predict the CO2 emission from the vehicle</h3>
+        <h1>Nicely centered</h1>
+        <p>This text block is vertically centered.
+        <p>Horizontally, too, if the window is wide enough. -->
+
+    <!-- <form action='{{ url_for('predict')}}"method="post">
         <input type="text" name="enginesize" placeholder="Engine Size" required="required" />
         <input type="text" name="cylinders" placeholder="Cylinders" required="required" />
         <input type="text" name="fuel" placeholder="Fuel" required="required" />
 
-        <button type="submit" class="btn">Predict</button>
+        <button type="submit" class="btn">Predict</button> -->
     </form></center>
 
     <br>
     <br>
-    {{ prediction_text }}
 
 </div>
