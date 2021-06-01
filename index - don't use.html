@@ -18,10 +18,22 @@
     <section>
         <div class='login'>
             <center><h1>Upload an image of your material for sale</h1>
+            <p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </p>
             
             <break></break>
             
-            <form action="/action_page.php">
+            <!--    <form action="/action_page.php">
             <input type="file" id="myFile" name="filename">
             <input type="submit">
             </form>
@@ -30,16 +42,17 @@
 
         <h2>OR</h2>
 
-        <h1>What material are you looking for?</h3>
+        <h1>What material are you looking for?</h3>-->
 
 
-
-    <form action='{{ url_for('find listings')}}"method="post">
-        <input type="text" name="material" placeholder="Material" required="required" />
+<!-- Main Input for Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" class="form-control" autocomplete="off" required>
+      <!--   <input type="text" name="material" placeholder="Material" required="required" />
         <input type="text" name="condition" placeholder="Condition" required="required" />
-        <input type="text" name="description" placeholder="Description" required="required" />
+        <input type="text" name="description" placeholder="Description" required="required" /> -->
 
-        <button type="submit" class="btn">Predict</button>
+        <input type="submit" value = "Submit" class="btn btn-info">Predict
     
     </section>
             
@@ -58,5 +71,5 @@
 
     <br>
     <br>
-
+    {{prediction_text}}
 </div>
