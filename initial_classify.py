@@ -26,23 +26,23 @@ from pathlib import Path
 
 def clip_classify(folder,element,img):
     
-    # device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # device = "cpu"
 
-    model, transform = clip.load("ViT-B/32", device=device, jit=False)
+    model, transform = clip.load("ViT-B/32", device=device, jit=True)
     
     # clip_dir = Path(".").absolute() / "CLIP"
     # sys.path.append(str(clip_dir))
 
     if element == "door":
-        class_names = ["a modern door","an old fashioned door","white door", "brown door", "flush door", "panelled door", "louvered door", "ledged door","a door in a good condition", "a door in a bad condition", "a door with and opening"]
-        
-        clip_dir = Path(".").absolute() / "CLIP"
+        class_names = ["a modern door","an old fashioned door","white door", "brown door", "flush door", "panelled door", "louvered door", "ledged door","a door in a good condition", "a door in a bad condition", "a door with an opening"]
 
-        sys.path.append(str(clip_dir))
+        # clip_dir = Path(".").absolute() / "CLIP"
 
-        with open(r'C:\\Users\\Admin\\Google Drive\\AIA Studio\\second_life\\model1.pickle', 'rb') as handle:
-            model = pickle.load(handle)
+        # sys.path.append(str(clip_dir))
+
+        # with open(r'C:\\Users\\Admin\\Google Drive\\AIA Studio\\second_life\\model1.pickle', 'rb') as handle:
+        #     model = pickle.load(handle)
     elif element == "window":
         #FILL WITH CLASSES AND LOCATION OF PKL FILE
         class_names = ["new","old"]
@@ -113,9 +113,9 @@ def clip_classify(folder,element,img):
 def clip_clasify_element(folder):
     
     #folder = '/content/gdrive/MyDrive/StudioAI/CLIP_ELEM_CLASS/'
-    device = "cpu"
-    # device = "cuda" if torch.cuda.is_available() else "cpu"
-    model, transform = clip.load("ViT-B/32", device=device, jit=False)
+    # device = "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model, transform = clip.load("ViT-B/32", device=device, jit=True)
     
     initial_class_names = ["door","window","flooring","lumber"]
     class_captions = [f"An image depicting a {x}" for x in initial_class_names]
@@ -156,9 +156,12 @@ def clip_clasify_element(folder):
     
         #print("It's ",element)
         
+        global probs_recom
         probs_data = clip_classify(folder,element,i)[0]
         probs_recom = clip_classify(folder,element,i)[1]
         print("It's ",element, " ",probs_recom)
+        return(probs_recom)
+        return(element)
     
         #database[class_names[i]] = pd.Series(probs_data, index=database.index)
         

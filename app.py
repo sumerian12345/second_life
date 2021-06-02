@@ -4,7 +4,10 @@ import urllib.request
 import os
 from werkzeug.utils import secure_filename
 from initial_classify import clip_clasify_element as classify
+from initial_classify import clip_classify
+# from initial_classify import probs_recom
 import argh
+import initial_classify
  
 app = Flask(__name__)
  
@@ -38,7 +41,10 @@ def upload_image():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         #print('upload_image filename: ' + filename)
         flash('Image successfully uploaded and displayed below')
-        return render_template('index.html', filename=filename)
+        # classify('static/')
+        probs_recom = classify('static/')
+        return render_template('index.html', filename=filename, prediction_text=probs_recom)
+        # return render_template('index.html', filename=filename, prediction_text='PREDICTION is :{}'.format(clip_classify('static/', element, i)[1]))
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
@@ -47,8 +53,12 @@ def upload_image():
 def display_image(filename):
     #print('display_image filename: ' + filename)
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
- 
-classify('static/')
+
+# probs_recom = classify('static/')
+
+
+# @app.route('/predict', methods=['POST'])
+# def predict():
 
 
 if __name__ == "__main__":
