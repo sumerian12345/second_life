@@ -1,15 +1,16 @@
-//templates/index.html
+<!--//templates/index.html-->
 <html>
 <head>
-<title>Python Flask Upload and Predict!</title>
+<title>Python Flask Upload and Predict</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
-<body>
-<p><h1 align="center">Python Flask Upload and Predict!</h1></p>
+<body style="background-color: darkgrey;" style="font-family: Arial;">
+<p><h1 align="center"><b>SECOND LIFE</b></h1></p>
+<p><h2 align="center">CLASSIFIER</h2></p>
 <div class="container">
 <div class="row">
-    <h2>Select a file to upload</h2>
+    <h2>Upload your image</h2>
     <p>
         {% with messages = get_flashed_messages() %}
           {% if messages %}
@@ -22,21 +23,21 @@
         {% endwith %}
     </p>
     {% if filename %}
-        <div>
-            <img src="{{ url_for('display_image', filename=filename) }}">
+        <div align="center">
+            <img src="{{ url_for('display_image', filename=filename) }}" style="width:auto;height:600px">
         </div>
     {% endif %}
     <form method="post" action="/" enctype="multipart/form-data">
         <dl>
             <p>
-                <input type="file" name="file" class="form-control" autocomplete="off" required>
+                <input style="background-color: darkgrey;" type="file" name="file" class="form-control" autocomplete="off" required>
             </p>
         </dl>
         <p>
             <input type="submit" value="Submit" class="btn btn-info">
         </p>
     </form>
-<p>{{ prediction_text }}</p>
+<p><h3 align="center" style="color: #E50914;"><b>{{ prediction_text }}</b></h3></p>
 </div>
 </div>
 </body>
