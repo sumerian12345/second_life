@@ -23,9 +23,9 @@ def clip_classify(folder,element,img):
         #with open('./Door/model1.pickle', 'rb') as handle:
         #    model = pickle.load(handle)
     elif element == "window":
+        class_names = ["a modern window", "a window with stained glass", "an old fashioned window", "white window", "opaque window", "a window in a good condition", "a window in a bad condition"]
         #with open('./Window/model1.pickle', 'rb') as handle:
         #    model = pickle.load(handle)
-        class_names = ["new","old"]
     elif element == "lumber":
         #FILL WITH CLASSES AND LOCATION OF PKL FILE
         class_names = ["structural","paneling","walls","furniture","flooring"]
