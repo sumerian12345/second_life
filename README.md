@@ -24,11 +24,14 @@ The datasets that were used containing elements scraped from Google Images are t
 
 This project uses two models:
 
- - Clip AI: for classifying uploaded images considering the features and assign tags to them.
- - Minisom: for mapping the images from the dataset and offering the user a range of images based on the one he previously selected.
+ - `Clip AI`: for classifying uploaded images considering the features and assign tags to them.
+ - `Minisom`: for mapping the images from the dataset and offering the user a range of images based on the one he previously selected.
 
 ## Training
 
 The tool uses the pre-trained model from Clip AI to classify the images. Each of the datasets were trained on the aformentioned features, so that it is able to assign a tag to each image for each of the trained features.
 
-<img src="imgs/training.jpg" width="900px"/>
+<img src="imgs/training.png" width="900px"/>
+
+## SOM
+
