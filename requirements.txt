@@ -44,7 +44,6 @@ rhino3dm==0.14.0
 rhinoinside==0.5.0
 s3transfer==0.4.2
 six==1.16.0
-termcolor==1.1.0
 torch==1.7.1
 torchvision==0.8.2+cu110
 tqdm==4.61.0
